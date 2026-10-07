@@ -203,7 +203,45 @@ Opcion no valida
 
 ## Parte II: Patrones
 
->>> RELLENAR cuando la termines: una o dos líneas de qué hace, cómo ejecutarla y un ejemplo de salida para n = 5 de cada patrón (A, B, C y D).
+Programa que recibe un entero positivo `n` y dibuja cuatro patrones:
+A (triángulo delimitado), B (pirámide de asteriscos),
+C (rombo de asteriscos) y D (pirámide numérica simétrica).
+
+### Compilar y ejecutar
+```
+cd patrones
+javac Patrones.java
+java Patrones
+```
+
+### Archivo
+- `Patrones.java`: construye los cuatro patrones con ciclos `for`.
+
+### Notas
+- En los patrones A, B y D, `n` es el número de renglones.
+- En el patrón C (rombo), `n` es el número de asteriscos de la fila central, así que el rombo tiene `2n - 1` renglones.
+- El patrón D se alinea bien con `n` de 1 a 9. Con `n` de 10 o más, los números de dos dígitos desalinean la figura.
+
+### Ejemplo de ejecución (n = 3)
+```
+Patron A
+   1
+ 1 * 1
+1 * * 1
+Patron B
+  * 
+ * * 
+* * * 
+Patron C
+  * 
+ * * 
+* * * 
+ * * 
+  * 
+Patron D
+    1 
+  1 2 1 
+1 2 3 2 1 
 
 ## Parte III: Manejo de cadenas
 
