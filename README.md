@@ -245,7 +245,109 @@ Patron D
 
 ## Parte III: Manejo de cadenas
 
->>> RELLENAR cuando la termines: una o dos líneas de qué hace, cómo ejecutarla y un ejemplo de cada una de las seis opciones del menú.
+Programa que pide una palabra o cadena y muestra un menú con seis operaciones.
+
+### Compilar y ejecutar
+```
+cd cadenas
+javac Cadenas.java
+java Cadenas
+```
+
+### Archivo
+- `Cadenas.java`: menú de operaciones sobre una cadena, hecho con ciclos, condicionales y métodos de `String` (`length`, `charAt`, `indexOf`, `trim`, `toLowerCase`).
+
+### Opciones del menú
+1. Mostrar la longitud de la cadena.
+2. Mostrar cada carácter en una línea distinta.
+3. Mostrar la cadena invertida.
+4. Contar cuántas veces aparece un carácter.
+5. Buscar si una subcadena está contenida en la cadena.
+6. Checar si dos cadenas son anagramas.
+
+### Decisiones
+- Los espacios cuentan como caracteres.
+- La búsqueda de subcadena (opción 5) distingue mayúsculas de minúsculas.
+- La comprobación de anagramas (opción 6) no distingue mayúsculas de minúsculas.
+- En la opción 4 solo se acepta un carácter; si se escribe otra cosa, muestra un error.
+- Si se elige una opción que no existe, muestra "Opcion no valida".
+
+### Ejemplos de ejecución
+Las líneas que empiezan con `>` son lo que escribe el usuario. En todos los ejemplos el programa muestra primero el menú de seis opciones; aquí se omite para ahorrar espacio.
+
+**Ejemplo 1: longitud (opción 1)**
+```
+> hola
+> 1
+Longitud: 4
+```
+
+**Ejemplo 2: caracteres en líneas distintas (opción 2)**
+```
+> sol
+> 2
+s
+o
+l
+```
+
+**Ejemplo 3: cadena invertida (opción 3)**
+```
+> hola
+> 3
+Invertida: aloh
+```
+
+**Ejemplo 4: contar apariciones (opción 4)**
+```
+> banana
+> 4
+Digita un caracter:
+> a
+Aparece 3 veces
+```
+
+**Ejemplo 5: subcadena que sí está (opción 5)**
+```
+> computadora
+> 5
+Digita la subcadena:
+> puta
+Si esta contenida
+```
+
+**Ejemplo 6: subcadena que no está (opción 5)**
+```
+> computadora
+> 5
+Digita la subcadena:
+> xyz
+No esta contenida
+```
+
+**Ejemplo 7: anagrama (opción 6)**
+```
+> Roma
+> 6
+Digita la segunda cadena:
+> amor
+Si son anagramas
+```
+
+**Ejemplo 8: no es anagrama (opción 6)**
+```
+> hola
+> 6
+Digita la segunda cadena:
+> holas
+No son anagramas
+```
+
+**Ejemplo 9: opción inexistente**
+```
+> hola
+> 9
+Opcion no valida
 
 ## Ejercicio 3: Civilización
 
