@@ -1,2 +1,214 @@
 # Representacion-binaria-algoritmos-clases
-PRACTICA 02: Petrovich Tovar Diego Saul
+PRACTICA 02: Representacion binaria, diseño de algoritmos y clases
+
+### Materia: Introduccion de Ciencias de la computacion (ICC) Facultad de ciencias, UNAM
+### Alumno: Diego Saul Petrovich Tovar
+
+##Contenido del proyecto
+ ## Descripción
+
+Este repositorio contiene la Práctica 02. Incluye una calculadora binaria de 8 bits, patrones con estructuras de control, manejo de cadenas y la clase `Civilizacion`.
+
+Estado de cada parte:
+
+- Parte I, calculadora binaria: terminada.
+- Parte II, patrones: >>> RELLENAR (terminada o pendiente)
+- Parte III, manejo de cadenas: >>> RELLENAR (terminada o pendiente)
+- Ejercicio 3, clase `Civilizacion`: >>> RELLENAR (terminada o pendiente)
+
+## Requisitos
+
+- Java 15 o superior. El menú de `CalculadoraBinaria.java` usa un bloque de texto con `"""`.
+- Para comprobar tu versión de Java: `java -version`
+- No se usan bibliotecas externas, solo `java.util.Scanner`.
+
+## Archivos del repositorio
+
+- `CalculadoraBinaria.java`: menú principal, llama a la operación elegida.
+- `Suma.java`: suma bit por bit con acarreo.
+- `Resta.java`: resta como A + (-B) con complemento a dos.
+- `Multiplicacion.java`: producto por sumas y desplazamientos.
+- `Division.java`: división entera con cociente y residuo.
+- `README.md`: este archivo.
+- >>> RELLENAR: agrega aquí los archivos de patrones, cadenas y `Civilizacion` cuando los tengas.
+
+## Cómo compilar
+
+Desde la carpeta del proyecto:
+
+```
+javac *.java
+```
+
+## Cómo ejecutar
+
+Calculadora completa, con menú:
+
+```
+java CalculadoraBinaria
+```
+
+Cada operación por separado:
+
+```
+java Suma
+java Resta
+java Multiplicacion
+java Division
+```
+
+>>> RELLENAR: agrega aquí los comandos para ejecutar patrones, cadenas y la clase de prueba de `Civilizacion`.
+
+## Parte I: Calculadora binaria
+
+Trabaja con enteros con signo de 8 bits, en el intervalo de -128 a 127, representados en complemento a dos. El usuario escribe los operandos en decimal y el programa muestra su representación de 8 bits y el resultado.
+
+### Cómo funciona cada operación
+
+- **Suma:** se hace bit por bit con acarreo. Muestra el acarreo final y el desbordamiento por separado, porque un acarreo fuera del bit más significativo no implica que el resultado sea inválido.
+- **Resta:** se calcula como A + (-B), obteniendo -B con el complemento a dos de B.
+- **Multiplicación:** se construye con productos parciales y desplazamientos (duplicando el multiplicando), respetando el signo de los operandos.
+- **División:** solo con enteros, muestra cociente y residuo. Aquí sí se usan `/` y `%`, como permite el enunciado. El residuo toma el signo del dividendo.
+- **Desbordamiento:** se avisa cuando el resultado matemático queda fuera de [-128, 127]. Por ejemplo `127 + 1`, `64 * 2` o `-128 / -1`.
+
+No se usan `Integer.toBinaryString` ni `Integer.parseInt(..., 2)`. Tampoco se resuelven suma, resta y multiplicación únicamente con `+`, `-` y `*`.
+
+### Validaciones
+
+- Operandos fuera de [-128, 127], incluso números muy grandes.
+- Entradas que no son enteros (letras, decimales) o ausencia de datos: se muestra un mensaje de error en lugar de cerrar el programa con una excepción.
+- Opciones inexistentes en el menú.
+- División entre cero.
+- Resultados que no caben en 8 bits.
+
+### Ejemplos de ejecución
+
+En cada ejemplo, las líneas que empiezan con `>` son lo que escribe el usuario. El menú completo se muestra solo en el primer ejemplo; en los demás se omite para abreviar.
+
+**Ejemplo 1. Suma con signos distintos: 5 + (-3)**
+
+```
+Calculadora Binaria de 8 Bits
+1.Suma
+2.Resta
+3.Multiplicacion
+4.Division
+
+Digita una opcion valida:
+
+> 1
+Digita el primer numero
+> 5
+Digita el segundo numero
+> -3
+Numero 1: 00000101
+Numero 2: 11111101
+Acarreo final: 1
+Desbordamiento: No
+Resultado:
+00000010
+```
+
+Hay acarreo final y aun así el resultado es válido (2).
+
+**Ejemplo 2. Resta con resultado negativo: 3 - 10**
+
+```
+> 2
+Digita el primer numero
+> 3
+Digita el segundo numero
+> 10
+Numero 1: 00000011
+Numero 2: 00001010
+Desbordamiento: No
+Resultado:
+11111001
+```
+
+`11111001` es -7 en complemento a dos.
+
+**Ejemplo 3. Multiplicación con signo: -5 x 3**
+
+```
+> 3
+Digita el primer numero
+> -5
+Digita el segundo numero
+> 3
+Numero 1: 11111011
+Numero 2: 00000011
+Desbordamiento: No
+Resultado:
+11110001
+```
+
+`11110001` es -15 en complemento a dos.
+
+**Ejemplo 4. Desbordamiento en la suma: 127 + 1**
+
+```
+> 1
+Digita el primer numero
+> 127
+Digita el segundo numero
+> 1
+Numero 1: 01111111
+Numero 2: 00000001
+Acarreo final: 0
+Desbordamiento: Si (el resultado no cabe en 8 bits con signo)
+```
+
+**Ejemplo 5. División con negativos: -13 / 5**
+
+```
+> 4
+Digita el primer numero
+> -13
+Digita el segundo numero
+> 5
+Numero 1: 11110011
+Numero 2: 00000101
+Desbordamiento: No
+Cociente: -2
+Residuo: -3
+```
+
+**Ejemplo 6. División entre cero: 7 / 0**
+
+```
+> 4
+Digita el primer numero
+> 7
+Digita el segundo numero
+> 0
+Error: no se puede dividir entre cero
+```
+
+**Ejemplo 7. Operando fuera de rango**
+
+```
+> 1
+Digita el primer numero
+> 200
+Numero fuera de rango (de -128 a 127)
+```
+
+**Ejemplo 8. Opción inexistente en el menú**
+
+```
+> 9
+Opcion no valida
+```
+
+## Parte II: Patrones
+
+>>> RELLENAR cuando la termines: una o dos líneas de qué hace, cómo ejecutarla y un ejemplo de salida para n = 5 de cada patrón (A, B, C y D).
+
+## Parte III: Manejo de cadenas
+
+>>> RELLENAR cuando la termines: una o dos líneas de qué hace, cómo ejecutarla y un ejemplo de cada una de las seis opciones del menú.
+
+## Ejercicio 3: Civilización
+
+>>> RELLENAR cuando lo termines: una o dos líneas de qué hace la clase, cómo ejecutar la prueba y el estado de al menos dos civilizaciones antes y después de los cambios.
