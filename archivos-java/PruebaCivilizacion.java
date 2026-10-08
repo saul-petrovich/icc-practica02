@@ -1,7 +1,7 @@
 public class PruebaCivilizacion {
   public static void main(String[] args) {
-    Civilizacion civilizacion1 = new Civilizacion("Aurora", "II", 6, 120, 80, 45);
-    Civilizacion civilizacion2 = new Civilizacion("Titanes", "I", 3, 40, 20, 10);
+    Civilizacion civilizacion1 = new Civilizacion("Francia", "II", 6, 120, 80, 45);
+    Civilizacion civilizacion2 = new Civilizacion("Inglaterra", "I", 3, 40, 20, 10);
 
     System.out.println("antes");
     civilizacion1.mostrarEstado();
