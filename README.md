@@ -351,4 +351,81 @@ Opcion no valida
 
 ## Ejercicio 3: Civilización
 
->>> RELLENAR cuando lo termines: una o dos líneas de qué hace la clase, cómo ejecutar la prueba y el estado de al menos dos civilizaciones antes y después de los cambios.
+## Civilización
+
+En este ejercicio hice la clase `Civilizacion`, que representa una civilización de un juego de estrategia. Está en `Civilizacion.java`, y la clase `PruebaCivilizacion.java` la prueba.
+
+### Atributos
+
+Todos son privados:
+
+- `nombre` (String)
+- `era` (String)
+- `poblacion` (int)
+- `alimento` (int)
+- `madera` (int)
+- `oro` (int)
+
+### Métodos
+
+- **Constructor:** recibe el estado inicial de la civilización.
+- **Getters y setters** de alimento, madera y oro. Los setters no aceptan números negativos: si les mandan uno, imprimen un error y no cambian nada.
+- **recolectarAlimento, recolectarMadera y recolectarOro:** suman la cantidad recibida a la que ya se tenía. Solo aceptan cantidades positivas.
+- **crearAldeano:** cuesta 50 de alimento. Si alcanza, resta el alimento y suma 1 a la población. Si no alcanza, no cambia nada.
+- **mostrarEstado:** imprime los datos de la civilización.
+
+### Cómo compilar y ejecutar
+
+```bash
+javac Civilizacion.java PruebaCivilizacion.java
+java PruebaCivilizacion
+```
+
+### Ejemplo de ejecución
+
+En la prueba se crean dos civilizaciones, `civilizacion1` y `civilizacion2`, y se muestra su estado antes y después de hacer operaciones con ellas.
+
+```text
+antes
+Civilizacion: Civilizacion 1
+Era: II
+Poblacion: 6
+Alimento: 120
+Madera: 80
+Oro: 45
+
+Civilizacion: Civilizacion 2
+Era: I
+Poblacion: 3
+Alimento: 40
+Madera: 20
+Oro: 10
+
+operacion
+Civilizacion 1 creo un aldeano
+Error: no se aceptan valores negativos
+Civilizacion 2 no tiene alimento suficiente para crear un aldeano
+Civilizacion 2 creo un aldeano
+
+despues
+Civilizacion: Civilizacion 1
+Era: II
+Poblacion: 7
+Alimento: 170
+Madera: 110
+Oro: 45
+
+Civilizacion: Civilizacion 2
+Era: I
+Poblacion: 4
+Alimento: 10
+Madera: 20
+Oro: 10
+```
+
+La civilizacion1 recolectó 100 de alimento y creó un aldeano, luego recolectó 30 de madera. Al intentar poner oro en -5 salió el error y el oro se quedó igual. La civilizacion2 primero no pudo crear un aldeano porque solo tenía 40 de alimento, pero después de recolectar 20 más sí pudo.
+
+
+## Ejemplos de ejecución
+
+Las capturas de pantalla de la calculadora, los patrones, el manejo de cadenas y las civilizaciones están en [tareaa.pdf](tareaa.pdf).
